@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">Sourdough bulk fermentation reference</title>
+  <desc id="desc">A clear container holding risen sourdough with bubbles and a marked fill line.</desc>
+  <defs>
+    <linearGradient id="bg" x1="92" x2="560" y1="50" y2="604" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff8e8"/>
+      <stop offset=".5" stop-color="#f4d98e"/>
+      <stop offset="1" stop-color="#476653"/>
+    </linearGradient>
+    <linearGradient id="dough" x1="168" x2="506" y1="176" y2="528" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8dea1"/>
+      <stop offset=".52" stop-color="#d99f3d"/>
+      <stop offset="1" stop-color="#8c5426"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="640" fill="url(#bg)"/>
+  <path fill="#23352f" fill-opacity=".18" d="M116 464c44-34 98-47 162-39 81 10 135-21 199-6 57 14 90 56 101 100 9 37-29 84-90 92H183c-74-12-111-80-67-147Z"/>
+  <rect x="130" y="78" width="382" height="484" rx="38" fill="#fff8ea" fill-opacity=".32" stroke="#55391d" stroke-opacity=".46" stroke-width="14"/>
+  <path fill="url(#dough)" d="M166 288c38-35 88-47 151-35 52 10 76-28 126-13 49 15 65 63 60 117l-17 151H158l-11-108c-5-50-9-85 19-112Z"/>
+  <path fill="#f7d486" fill-opacity=".88" d="M163 309c35-26 82-35 137-24 47 10 70-27 116-11 43 14 56 56 53 93-59-3-92 25-145 15-68-13-104-1-167 24-6-46-4-74 6-97Z"/>
+  <path fill="none" stroke="#385647" stroke-linecap="round" stroke-width="12" d="M178 244h288"/>
+  <path fill="none" stroke="#385647" stroke-dasharray="10 18" stroke-linecap="round" stroke-width="8" d="M184 178h270"/>
+  <g fill="#fff1c7" fill-opacity=".85">
+    <circle cx="221" cy="364" r="22"/>
+    <circle cx="303" cy="324" r="15"/>
+    <circle cx="383" cy="378" r="19"/>
+    <circle cx="437" cy="457" r="16"/>
+    <circle cx="258" cy="470" r="18"/>
+  </g>
+  <g fill="#6f3e1f" fill-opacity=".26">
+    <circle cx="230" cy="371" r="10"/>
+    <circle cx="306" cy="327" r="7"/>
+    <circle cx="389" cy="385" r="9"/>
+    <circle cx="260" cy="477" r="8"/>
+  </g>
+  <path fill="#293c33" d="M192 126h260v32H192z" opacity=".24"/>
+</svg>

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#184f35">
+    <meta name="description" content="A mobile-first sourdough bulk fermentation readiness helper.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Sourdough">
+    <title>Sourdough Bulk Fermentation</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar" aria-label="Sourdough app header">
+        <div class="brand-mark" aria-hidden="true">S</div>
+        <div>
+          <p class="eyebrow">Sourdough</p>
+          <h1>Bulk Fermentation</h1>
+        </div>
+        <button class="icon-button" type="button" id="resetButton" aria-label="Reset session" title="Reset session">
+          <span aria-hidden="true">↺</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="result-panel" id="resultPanel" aria-live="polite">
+          <div class="result-mark pending" id="resultMark" aria-hidden="true">
+            <span id="resultIcon">•</span>
+          </div>
+          <div class="result-copy">
+            <p class="result-label" id="resultLabel">Add samples</p>
+            <p class="result-message" id="resultMessage">Capture the start and current dough from the same side angle for the clearest comparison.</p>
+          </div>
+        </section>
+
+        <nav class="stepper" aria-label="Fermentation check steps">
+          <button class="step active" type="button" data-step="start">
+            <span class="step-number">1</span>
+            <span>Start</span>
+          </button>
+          <button class="step" type="button" data-step="current">
+            <span class="step-number">2</span>
+            <span>Current</span>
+          </button>
+          <button class="step" type="button" data-step="readiness">
+            <span class="step-number">3</span>
+            <span>Result</span>
+          </button>
+        </nav>
+
+        <section class="panel active" id="startPanel" data-panel="start">
+          <div class="section-heading">
+            <p class="eyebrow">Start sample</p>
+            <h2>Beginning of bulk</h2>
+            <p>Use a clear, straight-sided container and shoot from the side near counter height.</p>
+          </div>
+          <article class="capture-card">
+            <div class="media-preview" id="startPreview">
+              <img src="assets/dough-reference.svg" alt="Example sourdough in a clear container">
+              <div class="preview-overlay">
+                <strong>No start sample yet</strong>
+                <span>Photo or short video</span>
+              </div>
+            </div>
+            <div class="capture-actions">
+              <label class="button primary">
+                <input id="startPhotoInput" type="file" accept="image/*" capture="environment">
+                <span aria-hidden="true">▣</span>
+                Take photo
+              </label>
+              <label class="button secondary">
+                <input id="startVideoInput" type="file" accept="video/*" capture="environment">
+                <span aria-hidden="true">▸</span>
+                Record video
+              </label>
+              <label class="button quiet full-width">
+                <input id="startLibraryInput" type="file" accept="image/*,video/*">
+                Choose from library
+              </label>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel" id="currentPanel" data-panel="current">
+          <div class="section-heading">
+            <p class="eyebrow">Current sample</p>
+            <h2>Ready check</h2>
+            <p>Match the first angle, distance, and lighting as closely as practical.</p>
+          </div>
+          <article class="capture-card">
+            <div class="media-preview" id="currentPreview">
+              <img src="assets/dough-reference.svg" alt="Example sourdough in a clear container">
+              <div class="preview-overlay">
+                <strong>No current sample yet</strong>
+                <span>Photo or short video</span>
+              </div>
+            </div>
+            <div class="capture-actions">
+              <label class="button primary">
+                <input id="currentPhotoInput" type="file" accept="image/*" capture="environment">
+                <span aria-hidden="true">▣</span>
+                Take photo
+              </label>
+              <label class="button secondary">
+                <input id="currentVideoInput" type="file" accept="video/*" capture="environment">
+                <span aria-hidden="true">▸</span>
+                Record video
+              </label>
+              <label class="button quiet full-width">
+                <input id="currentLibraryInput" type="file" accept="image/*,video/*">
+                Choose from library
+              </label>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel" id="readinessPanel" data-panel="readiness">
+          <div class="section-heading">
+            <p class="eyebrow">Readiness</p>
+            <h2>Check the dough</h2>
+            <p>The app combines the media comparison with a few cues bakers already use.</p>
+          </div>
+
+          <form class="controls" id="readinessForm">
+            <label class="field">
+              <span>Target rise</span>
+              <output id="targetRiseOutput" for="targetRise">75%</output>
+              <input id="targetRise" type="range" min="40" max="110" step="5" value="75">
+            </label>
+
+            <label class="field">
+              <span>Rise since start</span>
+              <output id="manualRiseOutput" for="manualRise">Auto</output>
+              <input id="manualRise" type="range" min="0" max="150" step="5" value="75">
+            </label>
+
+            <label class="checkbox-row">
+              <input id="useAutoRise" type="checkbox" checked>
+              <span>Use photo estimate when available</span>
+            </label>
+
+            <div class="cue-grid" aria-label="Dough cues">
+              <label class="cue">
+                <input type="checkbox" id="cueBubbles">
+                <span>Surface bubbles</span>
+              </label>
+              <label class="cue">
+                <input type="checkbox" id="cueDomed">
+                <span>Domed top</span>
+              </label>
+              <label class="cue">
+                <input type="checkbox" id="cueJiggle">
+                <span>Gentle jiggle</span>
+              </label>
+              <label class="cue">
+                <input type="checkbox" id="cueWeakening">
+                <span>Flattening</span>
+              </label>
+            </div>
+
+            <button class="button primary full-width check-button" type="submit">
+              <span aria-hidden="true">✓</span>
+              Check readiness
+            </button>
+          </form>
+
+          <dl class="metric-grid" aria-label="Analysis details">
+            <div>
+              <dt>Estimated rise</dt>
+              <dd id="riseMetric">--</dd>
+            </div>
+            <div>
+              <dt>Gas activity</dt>
+              <dd id="activityMetric">--</dd>
+            </div>
+            <div>
+              <dt>Confidence</dt>
+              <dd id="confidenceMetric">--</dd>
+            </div>
+          </dl>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <span>Version <span id="appVersion">0.1.6</span></span>
+        <span>Guidance, not a lab test</span>
+      </footer>
+    </div>
+
+    <template id="imagePreviewTemplate">
+      <img alt="">
+    </template>
+
+    <template id="videoPreviewTemplate">
+      <video controls muted playsinline preload="metadata"></video>
+    </template>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

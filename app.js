@@ -288,7 +288,7 @@ function renderManualRiseControl() {
   const autoRise = getAutoRise();
   const useAuto = state.useAutoRise && Number.isFinite(autoRise);
   elements.manualRise.disabled = useAuto;
-  elements.manualRiseOutput.value = useAuto ? `Auto ${formatPercent(autoRise)}` : `${state.manualRise}%`;
+  elements.manualRiseOutput.value = useAuto ? `Photo ${formatPercent(autoRise)}` : `Manual ${state.manualRise}%`;
 }
 
 function renderResult() {
@@ -321,7 +321,7 @@ function getPendingResult(autoRise) {
       status: "pending",
       label: "Ready to check",
       icon: "•",
-      message: "Review the target rise and cues, then run the readiness check.",
+      message: "Review the target rise, estimated rise, and cues, then run the readiness check.",
       confidence: Number.isFinite(autoRise) ? "Medium" : "Low",
       risePercent: autoRise,
       activityLabel: getActivityLabel(),

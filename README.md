@@ -63,7 +63,7 @@ Private repository Pages support depends on the GitHub account or organization p
 
 ## Versioning Updates
 
-The current app version is `0.1.6`.
+The current app version is `0.1.7`.
 
 For every shipped update, bump both:
 

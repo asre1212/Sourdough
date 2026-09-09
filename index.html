@@ -134,20 +134,23 @@
             </label>
 
             <label class="field">
-              <span>Rise since start</span>
+              <span>Estimated rise</span>
               <output id="manualRiseOutput" for="manualRise">Auto</output>
-              <input id="manualRise" type="range" min="0" max="150" step="5" value="75">
+              <input id="manualRise" type="range" min="0" max="150" step="5" value="75" aria-describedby="manualRiseHint">
+              <small id="manualRiseHint" class="field-hint">When available, the photo estimate locks this slider. Uncheck it to enter your own rise amount.</small>
             </label>
 
             <label class="checkbox-row">
               <input id="useAutoRise" type="checkbox" checked>
-              <span>Use photo estimate when available</span>
+              <span>Use photo estimate (locks slider)</span>
             </label>
+
+            <p class="cue-note">Check the cues you see now. They adjust the final call for bubbles, shape, jiggle, and signs of over-proofing.</p>
 
             <div class="cue-grid" aria-label="Dough cues">
               <label class="cue">
                 <input type="checkbox" id="cueBubbles">
-                <span>Surface bubbles</span>
+                <span>Bubbly surface</span>
               </label>
               <label class="cue">
                 <input type="checkbox" id="cueDomed">
@@ -155,11 +158,11 @@
               </label>
               <label class="cue">
                 <input type="checkbox" id="cueJiggle">
-                <span>Gentle jiggle</span>
+                <span>Jiggles gently</span>
               </label>
               <label class="cue">
                 <input type="checkbox" id="cueWeakening">
-                <span>Flattening</span>
+                <span>Flattening top</span>
               </label>
             </div>
 
@@ -187,7 +190,7 @@
       </main>
 
       <footer class="app-footer">
-        <span>Version <span id="appVersion">0.1.6</span></span>
+        <span>Version <span id="appVersion">0.1.7</span></span>
         <span>Guidance, not a lab test</span>
       </footer>
     </div>
